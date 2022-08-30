@@ -1,0 +1,22 @@
+{
+  "name": "codialnode",
+  "version": "1.0.0",
+  "description": "my all social media website",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
+  "start": "nodemon index.js",
+  "keywords": [
+    "social"
+  ],
+  "author": "coding_ninjas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+    
+  }
+}
