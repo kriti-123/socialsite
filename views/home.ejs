@@ -1,25 +1,63 @@
-<h1>
-    Codeial / <%= title %>
-</h1>
-<link rel="stylesheet" href="/assets/css/layout.css">
-
-
-<section id="feed-posts">
-    <h4>Posts</h4>
-    <% if(locals.user){ %>
-        <form action="/posts/create" id="new-post-form" method="POST">
-            <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
-            <input type="submit" value="Post">
-        </form>
-        <% } %>
-
-            <div id="posts-list-container">
-                <!-- <%= posts%> -->
-                <ul>
-                    <% for(post of posts){ %>
-
-                        <%-include('_post')-%>
-                        <%} %>
-                </ul>
-            </div>
-</section>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title> -->
+    
+    <!-- <link rel="stylesheet" href="/css/homepage.css"> -->
+    <!-- <link rel="stylesheet" href="/css/layout.css"> -->
+    <link rel="stylesheet" href="/css/chat_box.css">
+    <!-- <link rel="stylesheet" href="/css/"> -->
+<!-- </head> -->
+<body>
+    <div>
+        <section id="feed-posts">
+            <h4>Posts</h4>
+            <% if(locals.user){ %>
+                <form action="/posts/create" id="new-post-form" method="POST">
+                    <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
+                    <input type="submit" value="Post">
+                </form>
+                <% } %>
+        
+                    <div id="posts-list-container">
+                        <!-- <%= posts%> -->
+                        <ul>
+                            <% for(post of posts){ %>
+        
+                                <%-include('_post')-%>
+                                    <%} %>
+                        </ul>
+                    </div>
+        </section>
+        <section id="user-friends">
+            <h3>Friends</h3>
+            <% for(u of all_users){%>
+                <p>
+                    <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
+                </p>
+                <%}%>
+        
+        </section>
+        <%- include('_chat_box') -%>
+        </div>
+        
+        <script src="/js/home_posts.js"></script>
+        <script src="/js/home_post_comments.js"></script>
+        
+        <script src="js/toggle_likes.js"></script>
+        <script>
+            $('.toggle-like-button').each(function(){
+                let self = this;
+                let toggleLike = new ToggleLike(self);
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+        <script src="/js/chat_engine.js"></script>
+        <%if(locals.user){%>
+        <script>
+            new chatEngine('user-chat-box','<%=locals.user.email%>')
+        </script>
+        <%}%>
+        </html>
+</body>
+</html>

@@ -3,12 +3,31 @@
 <head>
     
     <title><%= title %></title>
-    <link rel="stylesheet"href="/css/layout.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <link rel="stylesheet"href="/css/layout.css"> -->
 </head>
 <body>
     <%- include('_header'); %>
+
+    <!-- <%if(flash.success&&flash.success.length>0){%>
+       <h5><%=flash.success%></h5>
+       <%}%> -->
     <!-- <h1>ths is thyhyhy</h1> -->
     <%- body %>
     <%- include('_footer'); %>
+    <%- script %>
+    <script>
+        <% if(flash.success&&flash.success.length>0){ %>
+            new Noty({
+             theme:'relax',
+             text:'<%=flash.success%>',
+             type:'success',
+             layout:'topRight',
+             timeout:1500
+            }).show();
+            <%}%>
+    </script>
 </body>
 </html>
