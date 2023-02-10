@@ -1,36 +1,49 @@
-class chatEngine{
-    constructor(chatBoxId,userEmail){
-       this.chatBox=$(`#${chatBoxId}`);
-       this.userEmail=userEmail;
-       this.socket=io.connect('http://localhost:1000', { transports : ['websocket'] });
-       if(this.userEmail){
-         this.connectionHandler();
-       }
+class ChatEngine{
+    constructor(chatBoxId, userEmail){
+        this.chatBox = $(`#${chatBoxId}`);
+        this.userEmail = userEmail;
+
+        this.socket=io.connect('http://127.0.0.1:1000', { transports : ['websocket'] });
+
+        if (this.userEmail){
+            this.connectionHandler();
+        }
+
     }
+
+
     connectionHandler(){
         let self = this;
-        this.socket.on('connect',function(){
-            console.log("connection established using sockets");
-            self.socket.emit('join_room',{
-                user_email:self.userEmail,
-                chatroom:'codial'
+
+        this.socket.on('connect', function(){
+            console.log('connection established using sockets...!');
+
+
+            self.socket.emit('join_room', {
+                user_email: self.userEmail,
+                chatroom: 'codeial'
             });
-            self.socket.on('user_joined',function(data){
-                console.log("a user is joined",data);
+
+            self.socket.on('user_joined', function(data){
+                console.log('a user joined!', data);
             })
+
+
         });
 
+        // CHANGE :: send a message on clicking the send message button
         $('#send-message').click(function(){
             let msg = $('#chat-message-input').val();
-            if(msg!=''){
-              self.socket.emit('send-message',{
-                message:msg,
-                user_email:self.userEmail,
-                chatroom:'codial'
-              });
-            }
 
+            if (msg != ''){
+                self.socket.emit('send_message', {
+                    message: msg,
+                    user_email: self.userEmail,
+                    chatroom: 'codeial'
+                });
+            }
         });
+
         self.socket.on('receive_message', function(data){
             console.log('message received', data.message);
 
@@ -54,6 +67,6 @@ class chatEngine{
             newMessage.addClass(messageType);
 
             $('#chat-messages-list').append(newMessage);
-        })
+        });
     }
 }

@@ -4,7 +4,6 @@ const app = express();
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
-const sassMiddleware = require('node-sass-middleware');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
@@ -12,19 +11,22 @@ const passportJWT = require('./config/passport-jwt-strategy');
 const passportGooogle = require('./config/passport-google-auth-strategy');
 const mailerpost=require('./config/nodemailer');
 const chatServer = require('http').Server(app);
-const chatSocket = require('./config/chat_socket').chatSockets(chatServer);
+const chatSocket = require('./config/chat_sockets').chatSockets(chatServer);
 chatServer.listen(1000);
 console.log('chat server is listening on 1000');
 const MongoStore = require('connect-mongo');
+const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware'); 
-app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
-    debug: true,
-    outputStyle: 'extended',
-    prefix: '/css'
-}));
+app.use(
+    sassMiddleware({
+       src: "./assets/scss",
+       dest: "./assets/css",
+       debug: "true",
+       outputStyle: "expanded",
+       prefix: "/css",
+    })
+ );
 app.use(express.urlencoded());
 
 

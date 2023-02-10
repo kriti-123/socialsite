@@ -1,23 +1,14 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Document</title> -->
-    
-    <!-- <link rel="stylesheet" href="/css/homepage.css"> -->
-    <!-- <link rel="stylesheet" href="/css/layout.css"> -->
-    <link rel="stylesheet" href="/css/chat_box.css">
-    <!-- <link rel="stylesheet" href="/css/"> -->
-<!-- </head> -->
 <body>
     <div>
+        <% if(locals.user){ %>
         <section id="feed-posts">
             <h4>Posts</h4>
-            <% if(locals.user){ %>
+            <!-- <% if(locals.user){ %> -->
                 <form action="/posts/create" id="new-post-form" method="POST">
                     <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
                     <input type="submit" value="Post">
                 </form>
-                <% } %>
+                <!-- <% } %> -->
         
                     <div id="posts-list-container">
                         <!-- <%= posts%> -->
@@ -39,7 +30,8 @@
         
         </section>
         <%- include('_chat_box') -%>
-        </div>
+    </div>
+    <%} %>
         
         <script src="/js/home_posts.js"></script>
         <script src="/js/home_post_comments.js"></script>
