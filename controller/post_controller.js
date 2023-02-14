@@ -1,15 +1,25 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
 const Like = require('../models/like');
+const User = require('../models/user')
 module.exports.create = async function (req, res) {
     try {
         let post = await Post.create({
             content: req.body.content,
             user: req.user._id,
             name: req.user.name,
-            // avtar:req.avtar
+            // avtar:req.user.avtar
         });
-        // User.uploadedAvatar(req, res);
+        let user = await User.findById(req.params.id);
+        Post.postUploadedAvatar(req, res,function(err){
+            if(err){
+                console.log('the multer error un post=======');
+            }
+            if (req.file) {
+                console.log("hi suuccessfully uploaded pic ");
+                user.post.avatar = Post.avatarPath + '/' + req.file.filename;
+            }
+        });
 
         if (req.xhr) {
             console.log(req.user);
