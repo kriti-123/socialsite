@@ -1,5 +1,7 @@
+<!-- <p class="comment-container"> -->
+
 <li id="comment-<%= comment._id %>">
-    <p>
+    <p class="comment-container">
         <%if(locals.user && locals.user.id==comment.user.id){%>
 
             <small>
@@ -28,3 +30,4 @@
                     </small>
     </p>
 </li>
+<!-- </p> -->

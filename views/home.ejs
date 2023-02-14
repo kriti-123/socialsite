@@ -1,44 +1,44 @@
 <body>
-    <div>
+    <div class="home_page">
         <% if(locals.user){ %>
-        <section id="feed-posts">
-            <h4>Posts</h4>
-            <!-- <% if(locals.user){ %> -->
-                <form action="/posts/create" id="new-post-form" method="POST">
-                    <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
-                    <input type="submit" value="Post">
+            <div id="feed-posts">
+                <form action="/posts/create" id="new-post-form"class="post-form" method="POST"enctype="multipart/form-data">
+                    <textarea name="content" cols="30" rows="2"class="form-control" aria-label="With textarea" placeholder="Type Here..." required></textarea>
+                    <div class="mb-3">
+                        <!-- <label for="exampleInputPassword1" class="form-label"style="color:white;">Password</label> -->
+                        <input type="file"name="avatar" class="form-control">
+                      </div>
+                    <input type="submit"class="submit-btn" value="Post">
                 </form>
-                <!-- <% } %> -->
-        
-                    <div id="posts-list-container">
-                        <!-- <%= posts%> -->
-                        <ul>
-                            <% for(post of posts){ %>
-        
-                                <%-include('_post')-%>
-                                    <%} %>
-                        </ul>
-                    </div>
-        </section>
-        <section id="user-friends">
-            <h3>Friends</h3>
-            <% for(u of all_users){%>
-                <p>
-                    <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
-                </p>
+            <div id="posts-list-container">
+                    <ul>
+                        <% for(post of posts){ %>
+
+                            <%-include('_post')-%>
+                         <%} %>
+                    </ul>
+                </div>
+            </div>
+            <div id="user-friends">
+                <h3>Friends</h3>
+                <% for(u of all_users){%>
+                    <p>
+                        <a href="/users/profile/<%=u.id%>">
+                            <%=u.name%>
+                        </a>
+                    </p>
                 <%}%>
-        
-        </section>
-        <%- include('_chat_box') -%>
+            </div>
+            <%- include('_chat_box') -%>
     </div>
     <%} %>
-        
+
         <script src="/js/home_posts.js"></script>
         <script src="/js/home_post_comments.js"></script>
-        
+
         <script src="js/toggle_likes.js"></script>
         <script>
-            $('.toggle-like-button').each(function(){
+            $('.toggle-like-button').each(function () {
                 let self = this;
                 let toggleLike = new ToggleLike(self);
             });
@@ -46,10 +46,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
         <script src="/js/chat_engine.js"></script>
         <%if(locals.user){%>
-        <script>
-            new chatEngine('user-chat-box','<%=locals.user.email%>')
-        </script>
+            <script>
+                new chatEngine('user-chat-box','<%=locals.user.email%>','<%=locals.user.name%>')
+            </script>
         <%}%>
-        </html>
 </body>
 </html>
+

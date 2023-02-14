@@ -1,7 +1,69 @@
-body{
-    background-color: gray;
-    // background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPHNqAqHI1gLWATXv3wUl9Pvsu4ykuCVhJA&usqp=CAU');
-    // background-repeat: no-repeat;
-    // background-size:50%;
+.home_page{
+    // background-color: gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    #feed-posts{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        #posts-list-container{
+            color:white;
+            width:70rem;height:100vh;
+            // border:1px solid red;
+            margin-top: 1rem;
+            overflow:scroll;
+            padding:1rem;
+        }
+        #posts-list-container::-webkit-scrollbar {
+            display: none;
+          }
+    }
 
+}
+.post-container{
+    width:auto;
+    height:auto;
+    padding:10px;
+    margin:10px;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.79);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.79);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.79);
+    // border:1px solid green;
+    background-image: linear-gradient(to right, rgb(35, 35, 109), rgb(94, 110, 211),  rgb(28, 28, 94));
+}
+.post-comments{
+    width:90%;height:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:1px solid red;
+    .comment-form{
+        
+    }
+}
+#user-friends{
+        color:white;
+        width:55rem;height:100vh;
+        margin-top: 1rem;
+       overflow:scroll;
+       padding:1rem;
+}
+#user-friends::-webkit-scrollbar {
+    display: none;
+  }
+.submit-btn{
+    width:5rem;height:2.6rem;
+    border:1px solid rgb(94, 110, 211);
+    margin-top: 1rem;
+    border-radius: 1rem;
+}
+#new-post-form{
+    margin-top: 1rem;
+    padding: 1rem;
 }

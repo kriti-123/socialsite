@@ -41,12 +41,15 @@
         <div class="auth-links">
             <ul>
                 <% if (locals.user){ %>
-            
-                <li>
-                    <a href="/users/profile"><%= user.name %></a>
-                </li>
                 <li>
                     <a href="/users/sign-out">Sign Out</a>
+                </li>
+                <li>
+                    <!-- <a href="/users/profile"><%= user.name %></a> -->
+                    <a href="/users/profile/<%=user.id%>">
+                        <%=user.name%>
+                    </a>
+                    <img src="<%= user.avatar%>" alt="<%= user.name%>"width="25rem"height="25rem"border-radius="50%">
                 </li>
                 <% }else{ %>
                 <li>
@@ -63,7 +66,9 @@
     <%if(!locals.user){%>
     <div id="facebook-image">
         <div id="fimage">
-            <img src="https://wallpaperaccess.com/full/1308884.png"style="width:40rem;height:40rem;border-radius:50%;" alt="">
+            <img src="https://wallpaperaccess.com/full/1308884.png"style="width:20rem;height:20rem;border-radius:50%; box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.79);
+            -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.79);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.79);" alt="">
           <!-- <img src="https://png.pngtree.com/png-clipart/20221018/ourmid/pngtree-facebook-icon-social-media-3d-png-image_6308418.png" alt=""> -->
         </div>
     </div>

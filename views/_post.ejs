@@ -1,10 +1,11 @@
+<div class="post-container">
 <li id="post-<%=post._id%>">
     <p>
         <%if(locals.user && locals.user.id==post.user.id){%>
             <small>
                 <a class="delete-post-button"href="/posts/destroy/<%=post.id%>">delete</a>
             </small>
-            <%}%>
+            <%}%> 
                 <%= post.content %>
                     <br>
                     <small>
@@ -14,8 +15,12 @@
                     <small>
                         <% if (locals.user){ %>
                             <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                                    <%= post.likes.length %> Likes
+                                    <%= post.likes.length %> <img 
+                                        src="https://cdn-icons-png.flaticon.com/512/4102/4102964.png"
+                                        style="width:1.8rem;height:1.8rem;border-radius:50%;" alt="">
                             </a>
+                            <img src="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-edit-icon.png"
+                                 style="width:1.8rem;height:1.8rem;border-radius:50%;margin-left:1rem;" alt="">
                         <% }else{ %>
                             <%= post.likes.length %> Likes
                         <% } %>
@@ -23,7 +28,7 @@
     </p>
     <div class="post-comments">
         <% if (locals.user){ %>
-            <form action="/comments/create"id="post-<%=post._id%>-comments-form" method="POST">
+            <form action="/comments/create"class="comment-form"id="post-<%=post._id%>-comments-form" method="POST">
                 <input type="text" name="content" placeholder="Type Here to add comment..."
                     required>
                 <input type="hidden" name="post" value="<%= post._id %>">
@@ -45,4 +50,5 @@
     </div>
 
 </li>
+</div>
 

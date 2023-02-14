@@ -6,8 +6,11 @@ module.exports.create = async function (req, res) {
         let post = await Post.create({
             content: req.body.content,
             user: req.user._id,
-            name: req.user.name
+            name: req.user.name,
+            // avtar:req.avtar
         });
+        // User.uploadedAvatar(req, res);
+
         if (req.xhr) {
             console.log(req.user);
             return res.status(200).json({

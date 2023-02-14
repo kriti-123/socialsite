@@ -1,17 +1,25 @@
-<!-- <link rel="stylesheet" href="/css/user_profile.css"> -->
-<img src="<%= user.avatar%>" alt="<%= user.name%>"width="100">
-<h1>
-    Codeial / Profile Page
-</h1>
-<h1><%= user.name %></h1>
-<h1><%= user.email %></h1>
+<link rel="stylesheet" href="/css/user-profile-image.css">
+<center><img src="<%= user.avatar%>" alt="<%= user.name%>"class="user-profile-image">
+<h4 style="color:white;">Name-<%= user.name %></h4>
+<h4 style="color:white;">Email-<%= user.email %></h4></center>
 <% if(user.id == profile_user.id){%>
-    <form action="/users/update/<%=profile_user.id%>"method="post"enctype="multipart/form-data">
-        <input type="text"name="name"placeholder="your name"value="<%=profile_user.name%>"required>
-        <input type="email"name="email"placeholder="your email"value="<%=profile_user.email%>"required>
-        <input type="file"name="avatar"placeholder="profile picture">
-        <input type="submit"value="Update">
-    </form>
+    <div class="container">
+        <form action="/users/update/<%=profile_user.id%>"method="post"enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="exampleInputName" class="form-label"style="color:white;">user name</label>
+              <input type="text" name="name"class="form-control" id="exampleInputName"value="<%=profile_user.name%>"required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"style="color:white;">Email address</label>
+                <input type="email" name="email"class="form-control" id="exampleInputEmail1"value="<%=profile_user.email%>"required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"style="color:white;">Password</label>
+                <input type="file"name="avatar"placeholder="profile picture" class="form-control" id="exampleInputPassword1">
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form> 
     <%}else{%>
     <p><%=profile_user.name %></p>
     <p><%=profile_user.email %></p>

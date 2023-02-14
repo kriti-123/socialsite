@@ -1,3 +1,75 @@
-body {
-  background-color: gray;
+.home_page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.home_page #feed-posts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home_page #feed-posts #posts-list-container {
+  color: white;
+  width: 70rem;
+  height: 100vh;
+  margin-top: 1rem;
+  overflow: scroll;
+  padding: 1rem;
+}
+
+.home_page #feed-posts #posts-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.post-container {
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.79);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.79);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.79);
+  background-image: linear-gradient(to right, #23236d, #5e6ed3, #1c1c5e);
+}
+
+.post-comments {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+}
+
+#user-friends {
+  color: white;
+  width: 55rem;
+  height: 100vh;
+  margin-top: 1rem;
+  overflow: scroll;
+  padding: 1rem;
+}
+
+#user-friends::-webkit-scrollbar {
+  display: none;
+}
+
+.submit-btn {
+  width: 5rem;
+  height: 2.6rem;
+  border: 1px solid #5e6ed3;
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+
+#new-post-form {
+  margin-top: 1rem;
+  padding: 1rem;
 }
